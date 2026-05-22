@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Launcher</title>
+
+  <style>
+    body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      margin:0;
+      background:#111;
+      font-family:Arial;
+    }
+
+    button{
+      padding:20px 40px;
+      font-size:24px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      background:#4285f4;
+      color:white;
+    }
+  </style>
+</head>
+
+<body>
+
+<button onclick="openGame()">Open Game</button>
+
+<script>
+function openGame() {
+
+  let win = window.open("about:blank", "_blank");
+
+  win.document.write(`
+<!DOCTYPE html>
+<html lang="en-us">
+
+<base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/drift-hunters/">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+user-scalable=no">
+
+<title>Google</title>
+
+<meta name="description"
+content="Drift Hunters">
+
+<style>
+
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:black;
+}
+
+.webgl-content,
+#gameContainer,
+canvas {
+  width:100% !important;
+  height:100% !important;
+}
+
+.webgl-content {
+  position:absolute;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="webgl-content">
+  <div id="gameContainer"></div>
+</div>
+
+<script src="UnityLoader2019.js"><\/script>
+
+<script>
+
+var gameInstance =
+UnityLoader.instantiate(
+  "gameContainer",
+  "dh.json"
+);
+
+document.body.addEventListener("click", () => {
+
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  }
+
+}, { once:true });
+
+<\/script>
+
+</body>
+</html>
+  `);
+
+  win.document.close();
+}
+</script>
+
+</body>
+</html>
